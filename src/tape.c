@@ -1,3 +1,13 @@
+/**
+ * @file tape.c
+ * @author 4ffy
+ * @version 1.0.0
+ * @date 2022-02-26
+ * 
+ * @copyright Copyright (c) 2022 4ffy
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>

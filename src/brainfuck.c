@@ -1,3 +1,13 @@
+/**
+ * @file brainfuck.c
+ * @author 4ffy
+ * @version 1.0.0
+ * @date 2022-02-26
+ * 
+ * @copyright Copyright (c) 2022 4ffy
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +16,6 @@
 
 
 
-//Return whether a source has any ',' characters.
 int hasInput(char * source)
 {
     for (char * srcptr = source; *srcptr != '\0'; srcptr++)
@@ -16,10 +25,6 @@ int hasInput(char * source)
 
 
 
-/*
-Create an array of loops from the source. Each index in the array points to
-the other side (i.e. closed->open, open->closed).
-*/
 size_t * getLoops(char* source)
 {
     size_t srclen = strlen(source);
@@ -64,10 +69,6 @@ size_t * getLoops(char* source)
 
 
 
-/*
-Execute a brainfuck program given source/input strings and the width of the
-cells to be used. Return nonzero on failure.
-*/
 int execute(char * source, char * input, size_t bitWidth)
 {
     Tape   * tape  = initTape(bitWidth);

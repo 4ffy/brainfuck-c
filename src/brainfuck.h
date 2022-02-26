@@ -1,3 +1,13 @@
+/**
+ * @file brainfuck.h
+ * @author 4ffy
+ * @version 1.0.0
+ * @date 2022-02-26
+ * 
+ * @copyright Copyright (c) 2022 4ffy
+ *
+ */
+
 #include <stdlib.h>
 
 #ifndef __BRAINFUCK_H__
