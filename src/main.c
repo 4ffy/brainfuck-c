@@ -39,6 +39,7 @@ char * readInput()
     if (input == NULL) return NULL;
 
     strcpy(input, buf);
+    input[strlen(input) - 1] = '\0';
     return input;
 }
 
