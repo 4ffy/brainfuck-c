@@ -3,7 +3,8 @@
 #include <limits.h>
 #include "tape.h"
 
-//Initialize a new tape object.
+
+
 Tape * initTape(size_t bitWidth)
 {
     Tape * t = malloc(sizeof(Tape));
@@ -21,7 +22,6 @@ Tape * initTape(size_t bitWidth)
 
 
 
-//Free a tape object from memory.
 void freeTape(Tape * t)
 {
     if (t == NULL) return;
@@ -31,7 +31,6 @@ void freeTape(Tape * t)
 
 
 
-//Reallocate tape memory to change size. Return nonzero on failure.
 int resizeTape(Tape * t, size_t size)
 {
     t->data = realloc(t->data, size * sizeof(size_t));
@@ -46,7 +45,6 @@ int resizeTape(Tape * t, size_t size)
 
 
 
-//Move to the previous cell, if possible. Return nonzero on failure.
 int moveLeft(Tape * t)
 {
     if (t->cell > 0)
@@ -59,7 +57,6 @@ int moveLeft(Tape * t)
 
 
 
-//Move to the next cell, if possible. Return nonzero on failure.
 int moveRight(Tape * t)
 {
     if (t->cell + 1 == t->length)
@@ -72,7 +69,6 @@ int moveRight(Tape * t)
 
 
 
-//Add one to the current cell. Wrap around if limit reached.
 void increment(Tape* t)
 {
     t->data[t->cell] = (t->data[t->cell] + 1) % t->csize;
@@ -80,14 +76,12 @@ void increment(Tape* t)
 
 
 
-//Subtract one from the current cell. Wrap around if limit reached.
 void decrement(Tape* t)
 {
     t->data[t->cell] = (t->data[t->cell] + t->csize - 1) % t->csize;
 }
 
 
-//Set the current cell to the given value.
 void setCell(Tape* t, size_t value)
 {
     t->data[t->cell] = value;
@@ -95,7 +89,6 @@ void setCell(Tape* t, size_t value)
 
 
 
-//Return the value of the current cell.
 size_t getCell(Tape* t)
 {
     return t->data[t->cell];
@@ -103,7 +96,6 @@ size_t getCell(Tape* t)
 
 
 
-//Print the value of the current cell as a character, if applicable.
 void printCell(Tape* t)
 {
     size_t cell = getCell(t);
@@ -113,7 +105,6 @@ void printCell(Tape* t)
 
 
 
-//Print debug tape information
 void printDebug(Tape* t)
 {
     printf(
