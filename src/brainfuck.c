@@ -40,6 +40,7 @@ size_t * getLoops(char* source)
             if (!stackptr) //Stack empty
             {
                 free(stack);
+                free(loops);
                 return NULL;
             }
             stackptr--;
@@ -53,6 +54,7 @@ size_t * getLoops(char* source)
     if (stackptr) //stack not empty
     {
         free(stack);
+        free(loops);
         return NULL;
     }
 
@@ -147,7 +149,7 @@ int execute(char * source, char * input, size_t bitWidth)
             break;
 
             case '?':
-            setCell(tape, rand() % tape->csize);
+            setCell(tape, rand() % 256);
             break;
         }
     }
