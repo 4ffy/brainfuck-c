@@ -7,7 +7,7 @@ Source code is given from a file given at the command line, and the bit width
 of the cells can also be specified (e.g. `./brainfuck hello.bf 16`). The
 interpreter detects whether a program takes input and will only prompt for
 input if necessary. Arbitrary cell sizes are supported up to at least 32
-bytes.
+bits.
 
 ## Caveats
 Every Brainfuck interpreter has its idiosyncrasies. Here's some of the
