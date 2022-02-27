@@ -29,7 +29,10 @@ Tape * initTape(size_t bitWidth)
     if (t == NULL) return NULL;
 
     t->data = calloc(1, sizeof(size_t));
-    if (t->data == NULL) return NULL;
+    if (t->data == NULL) {
+        free(t);
+        return NULL;
+    }
 
     t->cell  = 0;
     t->csize = 1 << bitWidth;
