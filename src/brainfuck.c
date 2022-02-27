@@ -156,10 +156,6 @@ int execute(char * source, char * input, size_t bitWidth)
                 setCell(tape, 0);
             }
             break;
-
-            case '?':
-            setCell(tape, rand() % 256);
-            break;
         }
     }
 

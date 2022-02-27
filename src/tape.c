@@ -18,12 +18,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "tape.h"
 
 
 
 Tape * initTape(size_t bitWidth)
 {
+    if ((1 << bitWidth) >= UINT_MAX) {
+        fprintf(stderr, "Selected cell size %zu too large.", bitWidth);
+        return NULL;
+    }
+
     Tape * t = malloc(sizeof(Tape));
     if (t == NULL) return NULL;
 
