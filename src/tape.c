@@ -32,7 +32,7 @@ Tape * initTape(size_t bitWidth)
     if (t->data == NULL) return NULL;
 
     t->cell  = 0;
-    t->csize = 2 << (bitWidth - 1);
+    t->csize = 1 << bitWidth;
     t->length = 1;
 
     return t;
