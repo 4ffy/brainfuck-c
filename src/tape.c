@@ -1,7 +1,7 @@
 /**
  * @file tape.c
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -23,14 +23,14 @@
 
 
 
-Tape * initTape(size_t bitWidth)
+Tape* initTape(size_t bitWidth)
 {
     if ((1 << bitWidth) >= UINT_MAX) {
         fprintf(stderr, "Selected cell size %zu too large.", bitWidth);
         return NULL;
     }
 
-    Tape * t = malloc(sizeof(Tape));
+    Tape* t = malloc(sizeof(Tape));
     if (t == NULL) return NULL;
 
     t->data = calloc(1, sizeof(size_t));
@@ -48,7 +48,7 @@ Tape * initTape(size_t bitWidth)
 
 
 
-void freeTape(Tape * t)
+void freeTape(Tape* t)
 {
     if (t == NULL) return;
     free(t->data);
@@ -57,7 +57,7 @@ void freeTape(Tape * t)
 
 
 
-int resizeTape(Tape * t, size_t size)
+int resizeTape(Tape* t, size_t size)
 {
     t->data = realloc(t->data, size * sizeof(size_t));
     if (t->data == NULL) return 1;
@@ -71,7 +71,7 @@ int resizeTape(Tape * t, size_t size)
 
 
 
-int moveLeft(Tape * t)
+int moveLeft(Tape* t)
 {
     if (t->cell > 0)
     {
@@ -83,7 +83,7 @@ int moveLeft(Tape * t)
 
 
 
-int moveRight(Tape * t)
+int moveRight(Tape* t)
 {
     if (t->cell + 1 == t->length)
         if (resizeTape(t, t->length * 2) != 0)
@@ -104,7 +104,10 @@ void increment(Tape* t)
 
 void decrement(Tape* t)
 {
-    t->data[t->cell] = (t->data[t->cell] + t->csize - 1) % t->csize;
+    if (t->data[t->cell] == 0)
+        t->data[t->cell] = t->csize - 1;
+    else
+        t->data[t->cell]--;
 }
 
 

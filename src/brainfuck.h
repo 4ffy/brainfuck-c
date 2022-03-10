@@ -1,7 +1,7 @@
 /**
  * @file brainfuck.h
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -27,7 +27,7 @@
  * @param source    source string
  * @return int      1 if "," found, 0 otherwise
  */
-int hasInput(char * source);
+int hasInput(char* source);
 
 
 
@@ -46,7 +46,7 @@ int hasInput(char * source);
  * @param source      source string
  * @return size_t*    pointer to the loop array
  */
-size_t * getLoops(char* source);
+size_t* getLoops(char* source);
 
 
 /**
@@ -58,6 +58,6 @@ size_t * getLoops(char* source);
  * @param bitWidth    width of cells (8, 16, etc.)
  * @return int        nonzero on failure
  */
-int execute(char * source, char * input, size_t bitWidth);
+int execute(char* source, char* input, size_t bitWidth);
 
 #endif

@@ -1,7 +1,7 @@
 /**
  * @file main.c
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  * 
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -23,37 +23,41 @@
 
 
 
-char * readSource(char* filename)
+char* readSource(char* filename)
 {
+    //Open file.
     FILE* inf = fopen(filename, "r");
     if (inf == NULL) return NULL;
     
+    //Get size.
     fseek(inf, 0, SEEK_END);
     size_t inflen = ftell(inf);
     fseek(inf, 0, SEEK_SET);
 
-    char * source = malloc(inflen + 1);
+    //Allocate memory.
+    char* source = malloc(inflen + 1);
     if (source == NULL)
     {
         fclose(inf);
         return NULL;
     }
 
+    //Read file.
     fread(source, 1, inflen, inf);
     source[inflen] = '\0';
-    
     fclose(inf);
+
     return source;
 }
 
 
 
-char * readInput()
+char* readInput()
 {
     char buf[100];
     fgets(buf, 100, stdin);
 
-    char * input = malloc(strlen(buf) + 1);
+    char* input = malloc(strlen(buf) + 1);
     if (input == NULL) return NULL;
 
     strcpy(input, buf);
@@ -63,10 +67,11 @@ char * readInput()
 
 
 
-int main(int argc, char * argv[])
+int main(int argc, char* argv[])
 {
     srand(time(NULL));
 
+    //Parse options.
     if (argc != 2 && argc != 3)
     {
         fprintf(stderr, "Usage: %s /input/file bitwidth\n", argv[0]);
@@ -77,14 +82,16 @@ int main(int argc, char * argv[])
     if (argv[2])
         bitwidth = atoi(argv[2]);
 
-    char * source = readSource(argv[1]);
+    //Read source.
+    char* source = readSource(argv[1]);
     if (source == NULL)
     {
         fprintf(stderr, "Error: couldn't read source file %s\n", argv[1]);
         return EXIT_FAILURE;
     }
 
-    char * input = NULL;
+    //Read input, if necessary.
+    char* input = NULL;
     if (hasInput(source))
     {
         input = readInput();
@@ -96,6 +103,7 @@ int main(int argc, char * argv[])
         }
     }
     
+    //Execute Brainfuck.
     execute(source, input, bitwidth);
     printf("\n");
 

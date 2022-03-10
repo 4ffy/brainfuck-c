@@ -1,7 +1,7 @@
 /**
  * @file tape.h
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -26,7 +26,7 @@
  */
 typedef struct
 {
-    size_t * data; /**< cell memory              */
+    size_t*  data; /**< cell memory              */
     size_t   cell; /**< current memory cell      */
     size_t  csize; /**< maximum cell value       */
     size_t length; /**< current length of memory */
@@ -41,7 +41,7 @@ typedef struct
  * @return Tape*      pointer to the new Tape, or NULL if initialization
  *                    failed
  */
-Tape * initTape(size_t bitWidth);
+Tape* initTape(size_t bitWidth);
 
 
 
@@ -49,7 +49,7 @@ Tape * initTape(size_t bitWidth);
  * Free a tape object from memory.
  * @param t    target Tape
  */
-void freeTape(Tape * t);
+void freeTape(Tape* t);
 
 
 
@@ -60,7 +60,7 @@ void freeTape(Tape * t);
  * @param size    new target size
  * @return int    nonzero on failure
  */
-int resizeTape(Tape * t, size_t size);
+int resizeTape(Tape* t, size_t size);
 
 
 
@@ -70,7 +70,7 @@ int resizeTape(Tape * t, size_t size);
  * @param t       target Tape
  * @return int    nonzero on failure
  */
-int moveLeft(Tape * t);
+int moveLeft(Tape* t);
 
 
 
@@ -80,7 +80,7 @@ int moveLeft(Tape * t);
  * @param t       target Tape
  * @return int    nonzero on failure
  */
-int moveRight(Tape * t);
+int moveRight(Tape* t);
 
 
 

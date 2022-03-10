@@ -1,7 +1,7 @@
 /**
  * @file brainfuck.c
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  * 
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -24,22 +24,23 @@
 
 
 
-int hasInput(char * source)
+int hasInput(char* source)
 {
-    for (char * srcptr = source; *srcptr != '\0'; srcptr++)
+    for (char* srcptr = source; *srcptr != '\0'; srcptr++)
         if (*srcptr == ',') return 1;
     return 0;
 }
 
 
 
-size_t * getLoops(char* source)
+size_t* getLoops(char* source)
 {
     size_t srclen = strlen(source);
-    size_t * loops = calloc(srclen, sizeof(size_t));
-    size_t * stack = calloc(srclen, sizeof(size_t));
+    size_t* loops = calloc(srclen, sizeof(size_t));
+    size_t* stack = calloc(srclen, sizeof(size_t));
     size_t stackptr = 0;
 
+    //Loop through source.
     for (size_t srcptr = 0; srcptr < srclen; srcptr++)
     {
         switch (source[srcptr])
@@ -77,10 +78,11 @@ size_t * getLoops(char* source)
 
 
 
-int execute(char * source, char * input, size_t bitWidth)
+int execute(char* source, char* input, size_t bitWidth)
 {
-    Tape   * tape  = initTape(bitWidth);
-    size_t * loops = getLoops(source);
+    //Setup
+    Tape*   tape  = initTape(bitWidth);
+    size_t* loops = getLoops(source);
     if (loops == NULL)
     {
         fprintf(stderr, "Error: Couldn't create loop array (Unclosed loops?)\n");
@@ -88,14 +90,13 @@ int execute(char * source, char * input, size_t bitWidth)
         free(loops);
         return 1;
     }
-
     size_t srclen = strlen(source) + 1;
     size_t inplen = strlen(input) + 1;
+
+    //Loop through source.
     size_t srcptr = 0;
     size_t inpptr = 0;
-
     char opcode = 0;
-
     for (srcptr = 0; srcptr < srclen; srcptr++)
     {
         opcode = source[srcptr];
