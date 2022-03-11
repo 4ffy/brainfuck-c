@@ -18,8 +18,8 @@
 
 #include <stdlib.h>
 
-#ifndef __BRAINFUCK_H__
-#define __BRAINFUCK_H__
+#ifndef BRAINFUCK_H
+#define BRAINFUCK_H
 
 /**
  * Determine whether a source string has any input "," characters.

@@ -18,8 +18,8 @@
 
 #include <stdlib.h>
 
-#ifndef __TAPE_H__
-#define __TAPE_H__
+#ifndef TAPE_H
+#define TAPE_H
 
 /**
  * Tape memory type.
